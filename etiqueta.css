@@ -1,0 +1,80 @@
+.page {
+    flex-direction: row;
+    background-color: white;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+}
+.section {
+    margin: 10;
+    padding: 10;
+    flex-grow: 1
+}
+.diver {
+    width:  100vw;
+    height: 100vh;
+}
+.rightText{
+    text-align: right;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    height: 800px;
+    width: 90%;
+    justify-content: space-between;
+    margin: auto;
+    padding: 15px 0;
+}
+.smallPadding{
+    padding:5px
+}
+.mediumPadding{
+    padding:10px
+}
+.cell {
+    width:40vw;
+    flex-basis: 40vw;
+    border: 1px solid #000;
+    padding: 1rem;
+}
+.cellBig {
+    padding: 1rem;
+}
+.cellSmal {
+    padding: 1rem;
+}
+.fullCell {
+    width:100%;
+    flex-basis: 100%;
+    border: 1px solid #000;
+    padding: 1rem;
+}
+.imageSize{
+    width:200px;
+    max-width:350px;
+    height: auto;
+    max-height:100%;
+}
+.barcode{
+    width:70%;
+    max-width:260px;
+    height: 100%;
+    max-height: 80px;
+    margin:0;
+    padding: 0
+}
+.centerAll{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align:center;
+    align-content: center
+}
+.fontHeader{
+    font-size: 26px
+}
+.fontSmaller{
+    font-size: 24px
+}

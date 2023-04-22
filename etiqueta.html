@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etiqueta TGR</title>
+    <link rel="stylesheet" href="etiqueta.css">
+</head>
+<body>
+    <div style="color: black" class="diver">    
+        <div>
+          <div size="A4" class="page">
+          <div class="container">
+            <div class="cell fullCell smallPadding centerAll">
+              <p style="font-size: 35px">ESPIRAL SRL</p>
+            </div>
+            <div style="display: flex; flex-direction: column; height: 95px;" class="fullCell smallPadding centerAll">
+              
+              <img 
+                id="barcode"
+                class="barcode"
+                width={100}
+                height={100}
+                alt="BARCODE"
+            />
+
+            <p id="HBL"></p>
+              
+            </div>
+            <div style="    width: 100%; display: flex; justify-content: space-between">
+                <div style="border-left: 1px solid black" class="cellBig mediumPadding fontSmaller">
+                <p id="" class="fontHeader">
+                  Remitente:
+                </p>
+                <p id="sender">
+                
+                </p>
+                
+                <p class="fontHeader">
+                  Destinatario:
+                </p>
+                <p id="receiver"></p>
+  
+                <p>Dirección:</p>
+                <p id="receiverAddress"></p>
+                <p>CI: <span id="receiverCI"></span></p>
+                <p id="receiverPhone"></p>
+                
+              </div>
+              <div style="border-right: 1px solid black" class="cellSmal mediumPadding" >
+                
+              <img
+              
+              id="QRcode"
+                class="imageSize"
+                width={100}
+                height={100}
+                alt="QECode"
+                src= />
+              </div>
+            </div>
+            
+            <div class="fullCell mediumPadding">
+              <p class="fontHeader">
+                Contenido:
+              </p>
+              <p id="merchandiseDescription" class="fontHeader">
+                
+              </p>
+              <p class="fontHeader">
+               Peso:
+              </p>
+              <p id="merchandiseWeight" class="fontHeader">
+                Kg
+              </p>
+            </div>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function getParamsFromURL(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataString = urlParams.get('data');
+            const dataObject = JSON.parse(dataString);
+            return(dataObject);
+        }
+
+        var query = getParamsFromURL();
+        console.log(query)
+        document.getElementById("HBL").innerHTML = `${query.HBLNumber}`
+        document.getElementById("sender").innerHTML = `${query.sender.name} ${query.sender.surnames}`
+        const receiver=document.getElementById("receiver").innerHTML = `${query.receiver.name} ${query.receiver.surnames}`
+        const receiverAddress = document.getElementById("receiverAddress").innerHTML = `${query.receiver.address}`
+        const receiverCI = document.getElementById("receiverCI").innerHTML = `${query.receiver.CI}`
+        const receiverPhone = document.getElementById("receiverPhone").innerHTML = `${query.receiver.phone}`
+        const merchandiseDescription=document.getElementById("merchandiseDescription").innerHTML = `${query.merchandise.description}`
+        const merchandiseWeight = document.getElementById("merchandiseWeight").innerHTML = `${query.merchandise.weight} KG`
+
+        const qr = document.getElementById("QRcode")
+        qr.setAttribute('src', `https://api.qrserver.com/v1/create-qr-code/?size=800x800&data=${query.docCategory}-${query.HBLNumber}
+        -${query.receiver.name} ${query.receiver.surnames}-${query.receiver.address}
+        -${query.receiver.CI}-${query.receiver.phone}-${query.sender.name} ${query.sender.surnames}
+        -${query.sender.address}`);
+        const barcode = document.getElementById("barcode")
+        barcode.setAttribute(
+        'src',
+        `https://www.webarcode.com/barcode/image.php?code=${query.HBLNumber}&type=C128B&xres=1&height=50&width=167&font=3&output=png&197`
+        )
+      </script>
+</body>
+</html>
