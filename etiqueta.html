@@ -12,7 +12,7 @@
         <div>
           <div size="A4" class="page">
           <div class="container">
-            <div class="cell fullCell smallPadding centerAll">
+            <div class="cell fullCell centerAll">
               <p style="font-size: 35px">ESPIRAL SRL</p>
             </div>
             <div style="display: flex; flex-direction: column; height: 95px;" class="fullCell smallPadding centerAll">
@@ -93,7 +93,11 @@
         document.getElementById("HBL").innerHTML = `${query.HBLNumber}`
         document.getElementById("sender").innerHTML = `${query.sender.name} ${query.sender.surnames}`
         const receiver=document.getElementById("receiver").innerHTML = `${query.receiver.name} ${query.receiver.surnames}`
-        const receiverAddress = document.getElementById("receiverAddress").innerHTML = `${query.receiver.address}`
+
+        const { province, township, postalCode, phone, city, mainStreet, firstMiddleStreet, secondMiddleStreet, buildingNumber, apt, district } = query.receiver;
+        
+
+        const receiverAddress = document.getElementById("receiverAddress").innerHTML = `${province}, ${township}, ${city}, ${mainStreet}, ${firstMiddleStreet}, ${secondMiddleStreet}, ${buildingNumber}, ${apt}, ${district}`;
         const receiverCI = document.getElementById("receiverCI").innerHTML = `${query.receiver.CI}`
         const receiverPhone = document.getElementById("receiverPhone").innerHTML = `${query.receiver.phone}`
         const merchandiseDescription=document.getElementById("merchandiseDescription").innerHTML = `${query.merchandise.description}`
