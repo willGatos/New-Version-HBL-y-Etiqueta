@@ -112,7 +112,10 @@ function getParamsFromURL(){
     const dataObject = JSON.parse(dataString);
     return(dataObject);
 }
-
+async function ejecutarOperacion(text) {
+        
+    document.getElementById('status').textContent = text;
+  }
 async function generatePDF() {
     
     var query = getParamsFromURL();
@@ -269,12 +272,19 @@ async function upload(pdfData) {
     form.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
     form.append('file', new Blob([pdfData], {type: 'application/pdf'}));
 
-
+    ejecutarOperacion("Cargando")
     fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
         method: 'POST',
         headers: new Headers({ "Authorization": "Bearer " + gapi.auth.getToken().access_token }),
         body: form
-    }).then(res => console.log(res)).catch(e => console.log(e))
+    })
+    .then(res => {
+        ejecutarOperacion("Operación Exitosa")
+        console.log(res)})
+    .catch(e => {
+        ejecutarOperacion("ERROR, INTENTELO DE NUEVO O CONTACTENOS")
+        console.log(e)
+    })
   }
 
     //var worker = html2pdf().from(document.body).output('blob')
