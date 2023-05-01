@@ -1,6 +1,13 @@
 .marginLow{
     margin: 20px 10px;
 }
+#HBL{
+    margin: 0;
+    background: white;
+    position: absolute;
+    bottom: 1px;
+    font-size: 75px;
+}
 .page {
     flex-direction: row;
     background-color: white;
@@ -9,7 +16,7 @@
     align-items:center;
 }
 p{
-    font-size: 55px;
+    font-size: 75px;
 }
 .section {
     margin: 10;
@@ -58,13 +65,12 @@ p{
     padding: 0 5px;
 }
 .imageSize{
-    width: 361px;
-    max-width: 350px;
+    width: 400px;
     height: auto;
     max-height: 100%;   
 }
 .barcode{
-    width: 350px;
+    width: 600px;
     height: auto;
     max-height: 301px;
     margin: 0;
@@ -78,7 +84,7 @@ p{
     align-content: center
 }
 .fontHeader{
-    font-size: 80px
+    font-size: 65px
 }
 .fontSmaller{
     font-size: 24px
